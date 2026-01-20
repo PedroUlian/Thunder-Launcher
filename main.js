@@ -4,6 +4,20 @@ const { app, BrowserWindow, dialog, ipcMain, shell, Tray, Menu } = require("elec
 const { execFile } = require("child_process")
 const fetch = require("node-fetch")
 
+const gotTheLock = app.requestSingleInstanceLock();
+
+if (!gotTheLock) {
+  app.quit();
+} else {
+  app.on("second-instance", () => {
+    if (mainWindow) {
+      if (!mainWindow.isVisible()) {
+        mainWindow.show();
+      }
+      mainWindow.focus();
+    }
+  });
+}
 
 const STEAM_IGNORE_NAMES = [
   "Steamworks",
