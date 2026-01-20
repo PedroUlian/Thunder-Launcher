@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Thunder Launcher</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <span>LIBRARY</span>
+      <button class="add-btn" onclick="addGame()">＋</button>
+    </div>
+
+    <ul id="game-list"></ul>
+
+    <div class="sidebar-footer">
+      <button class="refresh-btn" onclick="importSteam()">Importar jogos da Steam</button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <h1 id="game-title">Select a game</h1>
+      <button id="remove-btn" class="remove-btn" disabled>🗑️</button>
+      <button class="play-btn" id="play-btn" disabled>▶</button>
+      
+
+    </div>
+
+    <!-- GRID -->
+    <div class="grid" id="grid"></div>
+
+  </main>
+
+</div>
+
+<!-- ADD GAME MODAL -->
+<div id="addModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Adicionar jogo</h2>
+
+    <input id="gameName" placeholder="Nome do jogo">
+    <input id="gameCover" placeholder="URL da capa">
+
+    <select id="gameType">
+      <option value="local">Local</option>
+      <option value="steam">Steam</option>
+    </select>
+
+    <input id="gamePath" placeholder="Caminho do executável" readonly>
+
+    <button class="file-btn" onclick="pickExe()">Selecionar .exe</button>
+
+    <input id="steamAppId" placeholder="Steam AppID">
+
+    <div class="modal-buttons">
+      <button id="confirmAddBtn" onclick="confirmAdd()">Adicionar</button>
+      <button onclick="closeModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0b1220;
+  color: #e2ecf3;
+}
+
+/* ===================== APP ===================== */
+
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===================== SIDEBAR ===================== */
+
+.sidebar {
+  width: 260px;
+  background: #0f1b2f;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+/* ===================== ADD BUTTON ===================== */
+
+.add-btn {
+  background: none;
+  border: none;
+  color: #dbdbdb;
+  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.add-btn:hover {
+  filter: brightness(1.05);
+}
+
+/* ===================== GAME LIST ===================== */
+
+#game-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+#game-list li {
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.12s, color 0.12s;
+  color: #c7d5e0;
+}
+
+#game-list li:hover {
+  background: rgba(76, 121, 245, 0.12);
+}
+
+#game-list li.active {
+  background: #2a416dce;
+  color: #ffffff;
+}
+
+/* ===================== SIDEBAR FOOTER ===================== */
+
+.sidebar-footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 8px;
+}
+
+.refresh-btn {
+  background: none;
+  border: none;
+  color: #c7d5e0;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.refresh-btn:hover {
+  color: #f5c84c;
+}
+
+/* ===================== MAIN ===================== */
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===================== TOP BAR ===================== */
+
+.topbar {
+  height: 72px;
+  background: #132338;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+#game-title {
+  font-size: 20px;
+  font-weight: 600;
+  flex: 1;
+}
+
+/* ===================== BUTTONS ===================== */
+
+.play-btn {
+  padding: 10px 28px;
+  background: linear-gradient(to right, #b0a622, #8a761b);
+  border: none;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.play-btn:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.play-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.remove-btn {
+  padding: 10px 18px;
+  background: #8b2d2d00;
+  border: none;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.remove-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.remove-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ===================== GRID ===================== */
+/* 🔧 padding-right menor pra eliminar o “buraco” da scrollbar */
+
+.grid {
+  padding: 18px 10px 18px 18px; /* direita menor */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 18px;
+  overflow-y: auto;
+}
+
+/* ===================== CARD ===================== */
+
+.card {
+  width: 200px;
+  height: 300px;
+  background: #000;
+  cursor: pointer;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card.selected {
+  outline: 2px solid #e6e357;
+}
+
+.card .placeholder {
+  width: 100%;
+  height: 100%;
+  background: #0f1b2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8fa3b8;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ===================== MODAL ===================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #0f1b2f;
+  padding: 20px;
+  width: 320px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.modal-content h2 {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #0b1220;
+  border: 1px solid #2a475e;
+  color: #c7d5e0;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: #c7a957;
+}
+
+/* ===================== MODAL BUTTONS ===================== */
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.modal-buttons button {
+  padding: 6px 14px;
+  background: #c7a957;
+  border: none;
+  color: #1a1a1a;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+/* ===================== FILE BUTTON ===================== */
+
+.file-btn {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  background: #132338;
+  border: 1px solid #2a475e;
+  color: #c7d5e0;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.file-btn:hover {
+  border-color: #f5c84c;
+}
+
+/* ===================== SCROLLBAR ===================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b1220;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 200, 76, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 200, 76, 0.8);
+}

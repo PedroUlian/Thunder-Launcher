@@ -1,0 +1,31 @@
+{
+  "name": "thunder-launcher",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^26.4.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "build": {
+    "appId": "com.ulian.ThunderLauncher",
+    "productName": "Thunder Launcher",
+    "files": [
+      "**/*",
+      "!node_modules/.cache/**"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    }
+  }
+}
